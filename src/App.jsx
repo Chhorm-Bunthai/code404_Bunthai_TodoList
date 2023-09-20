@@ -1,6 +1,7 @@
 import './App.css'
 import TaskCreating from './components/TaskCreating';
 import { useState } from 'react';
+import TaskShow from './components/TaskShow';
 
 function App() {
   const [title, setTitle] = useState([]);
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       <TaskCreating onSubmit={createTask}/>
+      <TaskShow onTitle={title}/>
     </>
   )
 }
