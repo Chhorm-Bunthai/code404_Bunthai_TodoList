@@ -5,6 +5,10 @@ import TaskShow from './components/TaskShow';
 
 function App() {
   const [title, setTitle] = useState([]);
+  const [editStatus, setEditStatus] = useState(false)
+  const openEdit = ()=>{
+    setEditStatus(!editStatus)
+  }
   const createTask = (term) => {
     const updatedTasks = [
       ...title,
@@ -26,7 +30,8 @@ function App() {
     <TaskCreating onSubmit={createTask}/>
     
   </section>
-  <TaskShow onTitle={title} onDelete={handleDeleteTask}/>
+  <TaskShow onEdit={openEdit} onEditStatus = {editStatus} onTitle={title} onDelete={handleDeleteTask}/>
+
       
     </>
   )

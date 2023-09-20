@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import EditTask from "./EditTask";
 
-function TaskShow({ onTitle, onDelete }) {
+function TaskShow({ onTitle, onDelete, onEdit, onEditStatus }) {
   const [modalTaskId, setModalTaskId] = useState(null); // Initialize modalTaskId as null
+  
 
   const openModal = (taskId) => {
     setModalTaskId(taskId);
   };
+
 
   const handleSure = () => {
     onDelete(modalTaskId); // Use modalTaskId to identify the task to delete
@@ -22,7 +25,7 @@ function TaskShow({ onTitle, onDelete }) {
               <button className="btn" onClick={() => openModal(item.id)}>
                 Delete
               </button>
-              <button className="btn">Edit</button>
+              <button className="btn" onClick={onEdit}>Edit</button>
             </div>
           </div>
         </div>
@@ -43,6 +46,11 @@ function TaskShow({ onTitle, onDelete }) {
           </div>
         </div>
       )}
+
+
+      {onEditStatus && <EditTask onEdit={onEdit}/>
+
+      }
       </div>
     </div>
   );
