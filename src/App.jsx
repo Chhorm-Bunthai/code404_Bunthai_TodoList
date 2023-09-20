@@ -12,10 +12,22 @@ function App() {
     ];
     setTitle(updatedTasks);
   };
+  const handleDeleteTask = (id)=>{
+    setTitle((title)=>title.filter(title=> title.id !== id))
+  }
   return (
     <>
-      <TaskCreating onSubmit={createTask}/>
-      <TaskShow onTitle={title}/>
+    <header>
+    <div className="header">
+        <h1>TODO APP</h1>
+    </div>
+  </header>
+  <section className='show-all-components'>
+    <TaskCreating onSubmit={createTask}/>
+    
+  </section>
+  <TaskShow onTitle={title} onDelete={handleDeleteTask}/>
+      
     </>
   )
 }
