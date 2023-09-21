@@ -8,7 +8,6 @@ body {
 }
 .form{
     width: 60%;
-    /* background-color: red; */
     margin: auto;
     display: flex;
     justify-content: center;
@@ -28,39 +27,54 @@ input::placeholder{
     padding-left: 5px;
 }
 .task{
+    display: block;
     height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: blue; */
-    padding: 0 10px;
+    padding: 0 5px;
     margin: 10px;
     border-radius: 5px;
     border: 1px solid rgb(0, 0, 0);
+   
 }
 .task p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
     font-size: 1.2rem;
     color: #000;
+    /* background-color: red; */
 }
 .btn-box{
+    /* width: 20%; */
     height: 100%;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 .btn{
-    height: 50%;
-    background-color: rgb(95, 213, 176);
-    padding: 5px 20px;
+    width: 80px;
+    background-color: rgb(4, 115, 143);
+    padding: 10px 0;
     border-radius: 5px;
+    text-align: center;
+    border: none;
+    outline: none;
 }
-
+.modal-layout{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 40%;
+    position: fixed;
+    left: 35%;
+}
 .modal{
     width: 300px;
     height: 100px;
-    position: fixed;
-    top: 30%;
-    left: 13%;
     background-color: rgb(6, 132, 250);
     display: flex;
     flex-direction: column;
@@ -88,5 +102,112 @@ input::placeholder{
     outline: none;
     border-radius: 5px;
     color: #fff;
+}
+
+.edit{
+    position: fixed;
+    width: 300px;
+    height: 150px;
+    top: 40%;
+    left: 15%;
+    background-color: rgb(6, 132, 250);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.edit h2{
+    color: #fff;
+    margin: 0;
+    padding-top: 5px;
+}
+.edit .form-edit{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.edit form input{
+    width: 100%;
+    margin: 0;
+}
+.edit form button{
+    width: 50px;
+    height: 40px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: rgb(4, 115, 143);
+}
+.middle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .modal-layout{
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 40%;
+        position: fixed;
+        left: 12%;
+    }
+    .edit{
+        position: fixed;
+        width: 300px;
+        height: 150px;
+        top: 40%;
+        left: 12%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+	
+}
+@media all and (min-width: 1405px) {
+    .modal-layout{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 40%;
+        position: fixed;
+        left: 40%;
+    }
+    .edit{
+        position: fixed;
+        width: 300px;
+        height: 150px;
+        top: 40%;
+        left: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    .edit{
+        position: fixed;
+        width: 300px;
+        height: 150px;
+        top: 40%;
+        left: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
 }
