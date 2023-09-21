@@ -15,7 +15,7 @@ function TaskCreating({onSubmit}) {
   return (
     <div className='input-form'>
         <form onSubmit={handleSubmit} className='form'>
-            <input value={word} type="text" onChange={handleChange} placeholder='Add your tasks'/>
+            <input value={word} type="text" onChange={handleChange} placeholder='Add your tasks' />
         </form>
     </div>
   )

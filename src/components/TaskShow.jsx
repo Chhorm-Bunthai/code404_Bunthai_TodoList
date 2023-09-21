@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import EditTask from "./EditTask";
 
-function TaskShow({ onTitle, onDelete, onEdit, }) {
+function TaskShow({ onTitle, onDelete, onEdit, onToggle }) {
   const [modalTaskId, setModalTaskId] = useState(null);
 
   const openModal = (taskId) => {
     setModalTaskId(taskId);
   };
-
   const handleSure = () => {
     onDelete(modalTaskId);
     setModalTaskId(null);
@@ -22,15 +21,16 @@ function TaskShow({ onTitle, onDelete, onEdit, }) {
       [taskId]: !prevState[taskId],
     }));
   };
-
   const allTaskDisplay = onTitle.map((item) => (
-    <div className="container" key={item.id}>
-      <div className="row">
-        <div className="col-12">
-          <div className="task">
-            <p>
-              {item.term}
-            </p>
+          <div className="task" key={item.id}>
+            <div className="title-checking">
+            <input
+              type="checkbox"
+              checked={item.packed}
+              onChange={() => onToggle(item.id)}
+            />
+            <p className={item.packed ? "checked" : ""}>{item.term}</p>
+            </div>
             <div className="btn-box">
               <button className="btn" onClick={() => openModal(item.id)}>
                 Delete
@@ -39,9 +39,6 @@ function TaskShow({ onTitle, onDelete, onEdit, }) {
                 Edit
               </button>
             </div>
-          </div>
-        </div>
-      </div>
       {editStates[item.id] && (
         <EditTask
           onText={item}
@@ -56,7 +53,7 @@ function TaskShow({ onTitle, onDelete, onEdit, }) {
   ));
 
   return (
-    <div className="n">
+    <div className="f">
       {allTaskDisplay}
       <div className="modal-layout">
         {modalTaskId !== null && (

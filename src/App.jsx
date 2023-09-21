@@ -8,14 +8,14 @@ function App() {
   const createTask = (term) => {
     const updatedTasks = [
       ...title,
-      { id: Math.round(Math.random() * 10000),term },
+      { id: Math.round(Math.random() * 10000),term,packed:false },
     ];
     setTitle(updatedTasks);
   };
   const handleDeleteTask = (id)=>{
     setTitle((title)=>title.filter(title=> title.id !== id))
   }
-  console.log('title',title)
+  
   const editTask = (id, newTerm) =>{
       const updatedTasks = title.map((task) => {
         if (task.id === id){
@@ -25,12 +25,13 @@ function App() {
       })
       setTitle(updatedTasks)
   }
-
-  const toggle = (id)=>{
-    setTitle(title.map(title=>{
-      title.id == id ? {...title, checked: !title.checked} : title
-    }))
-  }
+  const toggleTask = (id) => {
+    setTitle((title) =>
+      title.map((task) =>
+        task.id === id ? { ...task, packed: !task.packed } : task
+      )
+    );
+  };
   return (
     <>
     <header>
@@ -41,7 +42,7 @@ function App() {
   <section className='show-all-components'>
     <TaskCreating onSubmit={createTask}/>
   </section>
-  <TaskShow  onTitle={title} onDelete={handleDeleteTask} onEdit={editTask}/>
+  <TaskShow onToggle={toggleTask}  onTitle={title} onDelete={handleDeleteTask} onEdit={editTask}/>
     </>
   )
 }
