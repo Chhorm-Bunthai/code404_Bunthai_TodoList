@@ -5,10 +5,6 @@ import TaskShow from './components/TaskShow';
 
 function App() {
   const [title, setTitle] = useState([]);
-  const [editStatus, setEditStatus] = useState(false)
-  const openEdit = ()=>{
-    setEditStatus(!editStatus)
-  }
   const createTask = (term) => {
     const updatedTasks = [
       ...title,
@@ -19,6 +15,16 @@ function App() {
   const handleDeleteTask = (id)=>{
     setTitle((title)=>title.filter(title=> title.id !== id))
   }
+  console.log('title',title)
+  const editTask = (id, newTerm) =>{
+      const updatedTasks = title.map((task) => {
+        if (task.id === id){
+          return {...task, term: newTerm}
+        }
+        return task
+      })
+      setTitle(updatedTasks)
+  }
   return (
     <>
     <header>
@@ -28,11 +34,8 @@ function App() {
   </header>
   <section className='show-all-components'>
     <TaskCreating onSubmit={createTask}/>
-    
   </section>
-  <TaskShow onEdit={openEdit} onEditStatus = {editStatus} onTitle={title} onDelete={handleDeleteTask}/>
-
-      
+  <TaskShow  onTitle={title} onDelete={handleDeleteTask} onEdit={editTask}/>
     </>
   )
 }

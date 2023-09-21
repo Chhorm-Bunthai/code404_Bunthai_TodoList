@@ -11,7 +11,6 @@ function TaskCreating({onSubmit}) {
     }
     const handleChange = (e) =>{
         setWord(e.target.value)
-        console.log(word) 
     }
   return (
     <div className='input-form'>
