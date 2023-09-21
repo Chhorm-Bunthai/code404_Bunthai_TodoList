@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import EditTask from "./EditTask";
 
-function TaskShow({ onTitle, onDelete, onEdit,onCheck }) {
+function TaskShow({ onTitle, onDelete, onEdit, }) {
   const [modalTaskId, setModalTaskId] = useState(null);
+
   const openModal = (taskId) => {
     setModalTaskId(taskId);
   };
+
   const handleSure = () => {
     onDelete(modalTaskId);
     setModalTaskId(null);
@@ -13,18 +15,22 @@ function TaskShow({ onTitle, onDelete, onEdit,onCheck }) {
 
   // edit
   const [editStates, setEditStates] = useState({});
+
   const toggleEdit = (taskId) => {
     setEditStates((prevState) => ({
       ...prevState,
       [taskId]: !prevState[taskId],
     }));
   };
+
   const allTaskDisplay = onTitle.map((item) => (
     <div className="container" key={item.id}>
       <div className="row">
         <div className="col-12">
           <div className="task">
-            <p>{item.term}</p>
+            <p>
+              {item.term}
+            </p>
             <div className="btn-box">
               <button className="btn" onClick={() => openModal(item.id)}>
                 Delete
@@ -48,6 +54,7 @@ function TaskShow({ onTitle, onDelete, onEdit,onCheck }) {
       )}
     </div>
   ));
+
   return (
     <div className="n">
       {allTaskDisplay}

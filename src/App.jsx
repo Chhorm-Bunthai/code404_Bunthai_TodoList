@@ -25,6 +25,12 @@ function App() {
       })
       setTitle(updatedTasks)
   }
+
+  const toggle = (id)=>{
+    setTitle(title.map(title=>{
+      title.id == id ? {...title, checked: !title.checked} : title
+    }))
+  }
   return (
     <>
     <header>
