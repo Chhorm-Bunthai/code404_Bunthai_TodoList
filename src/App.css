@@ -11,6 +11,7 @@ body {
   color: #7a7a7a;
   font-size: 2rem;
   font-weight: 900;
+  margin: 40px 0;
 }
 button {
   color: #fff;
@@ -49,8 +50,8 @@ input::placeholder {
   font-size: 1rem;
 }
 .no-data {
-  width: 60%;
-  height: 100px;
+  width: 25%;
+  height: 140px;
   background-color: #0684fa;
   position: fixed;
   top: 40%;
@@ -67,15 +68,13 @@ input::placeholder {
   margin-top: 0;
 }
 .no-data button {
+  margin-top: 20px;
   padding: 8px 20px;
   background-color: #e432329d;
   color: #fff;
   border: none;
   outline: none;
   border-radius: 5px;
-}
-.container{
-  /* background-color: blue; */
 }
 .task {
   margin-top: 20px;
@@ -131,7 +130,7 @@ input::placeholder {
   top: 35%;
   left: 15%;
   width: 300px;
-  height: 100px;
+  height: 150px;
   background-color: #0684fa;
   display: flex;
   flex-direction: column;
@@ -148,7 +147,7 @@ input::placeholder {
   display: flex;
   justify-content: center;
   gap: 30px;
-  transform: translateY(-10px);
+  transform: translateY(10px);
 }
 .modal button {
   padding: 8px 20px;
@@ -216,6 +215,11 @@ input::placeholder {
   color: #000000a2;
 }
 @media only screen and (max-width: 600px) {
+  .no-data{
+    width: 60%;
+
+    
+  }
   .modal-layout {
     display: flex;
     justify-content: center;
@@ -224,11 +228,17 @@ input::placeholder {
     position: fixed;
     left: 12%;
   }
+  .modal{
+    position: fixed;
+    top: 39.5%;
+    height: 140px;
+    left: 12%;
+  }
   .edit {
     position: fixed;
     width: 300px;
-    height: 150px;
-    top: 40%;
+    height: 140px;
+    top: 39.5%;
     left: 12%;
   }
 }
@@ -239,16 +249,16 @@ and (max-device-width : 1024px)  {
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 40%;
+    top: 45%;
     position: fixed;
     left: 35%;
   }
   .modal {
     position: fixed;
-    top: 35%;
+    top: 36%;
     left: 35%;
     width: 300px;
-    height: 100px;
+    height: 140px;
     background-color: #0684fa;
     display: flex;
     flex-direction: column;
@@ -256,10 +266,28 @@ and (max-device-width : 1024px)  {
     align-items: center;
     border-radius: 10px;
   }
+  .edit {
+    position: fixed;
+    width: 300px;
+    height: 140px;
+    top: 36%;
+    left: 35%;
+    background-color: #0684fa;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 @media only screen   
 and (min-width: 1370px)  
 and (max-width: 1605px) {
+  .no-data{
+    top: 36%;
+    left: 38%;
+    height: 140px;
+  }
   .modal-layout {
     top: 40%;
     position: fixed;
@@ -269,12 +297,13 @@ and (max-width: 1605px) {
     position: fixed;
     top: 35%;
     left: 40%;
+    height: 140px;
   }
   .edit{
     position: fixed;
     width: 300px;
-    height: 150px;
-    top: 40%;
+    height: 140px;
+    top: 35%;
     left: 40%;
     background-color: #0684fa;
     border-radius: 5px;
