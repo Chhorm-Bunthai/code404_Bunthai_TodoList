@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import EditTask from "./EditTask";
 
 function TaskShow({ onTitle, onDelete, onEdit, onToggle }) {
-  const [modalTaskId, setModalTaskId] = useState(null);
-
-  const openModal = (taskId) => {
-    setModalTaskId(taskId);
-  };
-  const handleSure = () => {
-    onDelete(modalTaskId);
-    setModalTaskId(null);
-  };
-
-  // edit
+  const [modalDelete, setModalDelete] = useState(null);
   const [editStates, setEditStates] = useState({});
 
+  const openModal = (taskId) => {
+    setModalDelete(taskId);
+  };
+  const handleSure = () => {
+    onDelete(modalDelete);
+    setModalDelete(null);
+  };
   const toggleEdit = (taskId) => {
     setEditStates((prevState) => ({
       ...prevState,
@@ -22,29 +19,38 @@ function TaskShow({ onTitle, onDelete, onEdit, onToggle }) {
     }));
   };
   const allTaskDisplay = onTitle.map((item) => (
-          <div className="task" key={item.id}>
-            <div className="title-checking">
-            <input
-              type="checkbox"
-              checked={item.packed}
-              onChange={() => onToggle(item.id)}
-            />
-            <p className={item.packed ? "checked" : ""}>{item.term}</p>
+    <div className="task" key={item.id}>
+      <div className="title-checking">
+        <input
+          type="checkbox"
+          checked={item.packed}
+          onChange={() => onToggle(item.id)}
+        />
+        <p  className={item.packed ? "checked" : ""}>{item.term}</p>
+      </div>
+      <div className="btn-box">
+        <button className="btn" onClick={() => openModal(item.id)}>
+          Delete
+        </button>
+        <button className="btn" onClick={() => toggleEdit(item.id)}>
+          Edit
+        </button>
+      </div>
+      {modalDelete !== null && (
+          <div className="modal">
+            <h2>Are you sure?</h2>
+            <div className="answer">
+              <button onClick={handleSure}>Sure!</button>
+              <button onClick={() => setModalDelete(null)}>Cancel</button>
             </div>
-            <div className="btn-box">
-              <button className="btn" onClick={() => openModal(item.id)}>
-                Delete
-              </button>
-              <button className="btn" onClick={() => toggleEdit(item.id)}>
-                Edit
-              </button>
-            </div>
+          </div>
+        )}
       {editStates[item.id] && (
         <EditTask
           onText={item}
           onCancel={() => toggleEdit(item.id)}
           onEdit={(updatedText) => {
-            toggleEdit(item.id); // Close the modal
+            toggleEdit(item.id);
             onEdit(item.id, updatedText);
           }}
         />
@@ -53,21 +59,9 @@ function TaskShow({ onTitle, onDelete, onEdit, onToggle }) {
   ));
 
   return (
-    <div className="f">
+    <div className="container">
       {allTaskDisplay}
-      <div className="modal-layout">
-        {modalTaskId !== null && (
-          <div className="modal">
-            <h2>Are you sure?</h2>
-            <div className="answer">
-              <button onClick={handleSure}>Sure?</button>
-              <button onClick={() => setModalTaskId(null)}>Cancel</button>
-            </div>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
-
 export default TaskShow;
