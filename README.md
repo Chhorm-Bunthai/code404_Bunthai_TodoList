@@ -59,4 +59,4 @@ Convention guide can be accessed [here](https://www.notion.so/Convention-Guide-T
 - I learning how to handle components
 - I learning more about function in react and other JavaScript method as well
 # Contributor
-- For this project, I do it all myself. but there some resources that I used to make this project happen such as  Recommendation course (Modern React with Redux [2023 Update]) in Udemy and I also do research on Google as well [MDN](https://developer.mozilla.org/en-US/)
+- For this project, I do it all myself. but there some resources that I used to make this project happen such as  Recommendation course (Modern React with Redux [2023 Update]) in Udemy and I also do research on Google as well such as [MDN](https://developer.mozilla.org/en-US/) ad\nd so on
